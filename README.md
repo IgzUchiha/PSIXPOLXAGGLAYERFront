@@ -1,7 +1,5 @@
 Cross-Chain Swap Design Pattern ( WIP )
 
-> **🚧 WORK IN PROGRESS**
->
 > **Note:** This repository is a work-in-progress (WIP). Core implementation and documentation are being finalized and the repository will be ready for full use soon.
 
 ## Overview
