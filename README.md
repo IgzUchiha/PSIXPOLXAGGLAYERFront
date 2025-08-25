@@ -1,4 +1,4 @@
-# EggSwap: Cross-Chain Swap Design Pattern
+Cross-Chain Swap Design Pattern ( WIP )
 
 ## Overview
 
