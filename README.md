@@ -1,4 +1,4 @@
-# Cross-Chain Swap Design Pattern ( WIP )
+Cross-Chain Swap Design Pattern ( WIP )
 
 > **🚧 WORK IN PROGRESS**
 >
@@ -138,3 +138,170 @@ Destination Chain: Mint Tokens → Execute Swap
 ```
 Input Validation → Route Calculation → Bridge Preparation → Execution → Monitoring
 ```
+
+### 3.3 Message Claim Handler
+**File**: `backend/claimMessage.ts`
+
+**Purpose**: Bridge message finalization logic
+
+### 3.4 LxLy Utilities
+**File**: `backend/utils_lxly.ts`
+
+**Purpose**: Agglayer bridge client integration utilities
+
+#### 3.4.1 Core Functions
+- LxLy client initialization
+- Bridge parameter configuration
+- Message encoding utilities
+- Status polling helpers
+
+***
+
+## 4. Bridge Integration Strategy
+
+### 4.1 Agglayer LxLy Integration
+**Pattern**: Bridge & Call Architecture
+
+#### 4.1.1 Message Flow
+| Phase | Location | Action |
+|-------|----------|--------|
+| **Prepare** | Source Chain | Create swap calldata for destination |
+| **Bridge** | Bridge Layer | Lock tokens and send message |
+| **Execute** | Destination | Mint tokens and execute swap |
+
+### 4.2 Bridge & Call Implementation
+
+```typescript
+// Core bridge operation
+await client.bridgeExtensions[sourceNetworkId].bridgeAndCall(
+  sourceTokenAddress,
+  amount,
+  destinationNetworkId,
+  routerAddress,
+  userAddress,
+  swapCalldata,
+  forceUpdateGlobalExitRoot,
+  permitData
+);
+```
+
+### 4.3 Calldata Generation
+
+```typescript
+// Swap instruction encoding
+const iface = new ethers.Interface(RouterAbi);
+const calldata = iface.encodeFunctionData("swapExactTokensForTokens", [
+  amountInWei,
+  minAmountOut.toString(),
+  swapPath,
+  userAddress,
+  deadline
+]);
+```
+
+***
+
+## 5. Smart Contract Integration
+
+### 5.1 Token Configuration
+**Networks**: Sepolia (Network 0), Cardona (Network 1)
+
+```typescript
+const TOKENS = {
+  0: {  // Sepolia
+    TOKEN_A: "0x794203e2982EDA39b4cfC3e1F802D6ab635FcDcB",
+    TOKEN_B: "0x5eE2DeAd28817153F6317a3A21F1e8609da0c498"
+  },
+  1: {  // Cardona
+    TOKEN_A: "0x19956fa010ECAeA67bd8eAa91b18A0026F1c31D7",
+    TOKEN_B: "0xD6395Ee1b7DFDB64ba691fdB5B71b3624F168C4C"
+  }
+};
+```
+
+### 5.2 Router Integration
+**Purpose**: Uniswap-compatible swap execution
+
+#### 5.2.1 Core Functions
+- `swapExactTokensForTokens` - Execute token swaps
+- `getAmountsOut` - Calculate swap outputs
+- `addLiquidity` - Liquidity provision
+
+### 5.3 Bridge Executor Permissions
+
+```solidity
+// Required approvals for cross-chain swaps
+token.approve(bridgeExecutorAddress, maxAmount);
+token.approve(routerAddress, maxAmount);
+```
+
+***
+
+## 6. Component Architecture
+
+### 6.1 Core UI Components
+
+| Component | File | Purpose |
+|-----------|------|---------|
+| **CrossChainSwapForm** | `components/CrossChainSwapForm.tsx` | Main swap interface |
+| **SwapForm** | `components/SwapForm.tsx` | Local swap operations |
+| **LiquidityForm** | `components/LiquidityForm.tsx` | Liquidity management |
+
+### 6.2 Component Responsibilities
+
+#### 6.2.1 CrossChainSwapForm
+- Token selection interface
+- Amount input and validation
+- Cross-chain route calculation
+- Transaction status monitoring
+- Error handling and user feedback
+
+#### 6.2.2 SwapForm
+- Single-chain swap operations
+- Slippage configuration
+- Gas estimation display
+
+#### 6.2.3 LiquidityForm
+- Add/remove liquidity operations
+- Pool information display
+- Yield calculation
+
+***
+
+## 7. Configuration Management
+
+### 7.1 Environment Variables
+
+```bash
+# RPC Configuration
+NETWORK_0_RPC=<sepolia_rpc_url>
+NETWORK_1_RPC=<cardona_rpc_url>
+
+# Bridge Addresses
+NETWORK_0_BRIDGE=<sepolia_bridge_address>
+NETWORK_1_BRIDGE=<cardona_bridge_address>
+
+# Signer Configuration
+USER1_PRIVATE_KEY=<server_signer_key>
+```
+
+### 7.2 Network Configuration
+
+```typescript
+const configuration = {
+  0: {  // Sepolia
+    rpcUrl: process.env.NETWORK_0_RPC,
+    bridgeAddress: process.env.NETWORK_0_BRIDGE,
+    bridgeExtensionAddress: "0x...",
+    routerAddress: "0x..."
+  },
+  1: {  // Cardona
+    rpcUrl: process.env.NETWORK_1_RPC,
+    bridgeAddress: process.env.NETWORK_1_BRIDGE,
+    bridgeExtensionAddress: "0x...",
+    routerAddress: "0x..."
+  }
+};
+```
+
+***
