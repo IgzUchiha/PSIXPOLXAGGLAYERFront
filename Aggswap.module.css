@@ -1,0 +1,181 @@
+.agg-root {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--agg-bg);
+  font-family: 'Inter', 'DM Sans', 'Segoe UI', Arial, sans-serif;
+  box-sizing: border-box;
+  padding: 2.5rem 0 4rem 0;
+}
+
+.agg-card {
+  background: var(--agg-card-bg);
+  border: 1.5px solid var(--agg-card-border);
+  border-radius: var(--agg-radius);
+  box-shadow: var(--agg-shadow);
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  transition: box-shadow var(--agg-transition), border var(--agg-transition), transform var(--agg-transition);
+  animation: aggFadeInUp 0.7s var(--agg-transition);
+  animation-fill-mode: both;
+  overflow: visible;
+  box-sizing: border-box;
+}
+@keyframes aggFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.01);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.agg-header {
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+.agg-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--agg-text);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+.agg-desc {
+  color: var(--agg-text-secondary);
+  font-size: 1.1rem;
+  margin-top: 0.25rem;
+}
+
+.agg-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+.agg-tab {
+  display: flex;
+  align-items: center;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--agg-text-secondary);
+  background: #f3f4f6;
+  border: none;
+  border-radius: var(--agg-radius-pill);
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  transition: background var(--agg-transition), color var(--agg-transition), box-shadow var(--agg-transition), transform var(--agg-transition);
+  outline: none;
+  box-shadow: none;
+}
+.agg-tab.active {
+  background: var(--agg-accent);
+  color: #fff;
+  box-shadow: 0 2px 8px 0 rgba(24,24,27,0.10);
+  transform: scale(1.04);
+}
+.agg-tab:focus {
+  box-shadow: 0 0 0 2px #18181b22;
+}
+.agg-tab-icon {
+  margin-right: 0.5rem;
+  font-size: 1.2em;
+  opacity: 0.8;
+}
+
+.agg-card-content {
+  margin-top: 0.5rem;
+  animation: aggTabContentFade 0.4s var(--agg-transition);
+  animation-fill-mode: both;
+}
+@keyframes aggTabContentFade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.agg-form-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--agg-text);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+.agg-input {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--agg-radius-sm);
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 1.08rem;
+  color: var(--agg-text);
+  margin-bottom: 1.1rem;
+  transition: border var(--agg-transition), box-shadow var(--agg-transition);
+}
+.agg-input:focus {
+  border-color: var(--agg-accent);
+  box-shadow: 0 0 0 2px #18181b22;
+  outline: none;
+}
+
+.agg-btn {
+  width: 100%;
+  padding: 1rem 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: var(--agg-radius-sm);
+  background: var(--agg-accent);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px 0 rgba(24,24,27,0.10);
+  cursor: pointer;
+  transition: box-shadow var(--agg-transition), transform var(--agg-transition), background var(--agg-transition);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+.agg-btn:hover, .agg-btn:focus {
+  background: var(--agg-accent-light);
+  box-shadow: 0 4px 16px 0 rgba(24,24,27,0.18);
+  transform: scale(1.025) translateY(-2px);
+}
+.agg-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 4px 0 rgba(24,24,27,0.10);
+}
+
+@media (max-width: 600px) {
+  .agg-card {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+  }
+  .agg-title {
+    font-size: 1.3rem;
+  }
+  .agg-header {
+    margin-bottom: 1.2rem;
+  }
+  .agg-tabs {
+    gap: 0.25rem;
+    margin-bottom: 1.2rem;
+  }
+} 
