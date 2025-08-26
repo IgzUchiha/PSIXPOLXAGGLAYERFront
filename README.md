@@ -1,6 +1,8 @@
 # Cross-Chain Swap Design Pattern ( WIP )
 
 > **Note — Work in progress:** The repository already includes all the main components, services, UI and smart contracts . We're actively finishing the final end-to-end integration and the local AggSandbox setup to enable easy local testing and full deployment.
+>
+> **Demo / Announcement:** See the demo announcement for a short showcase: [POC Demo on X](https://x.com/Agglayer/status/1948748131958706414).
 
 ## Overview
 
