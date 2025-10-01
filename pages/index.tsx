@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Navbar } from '../components/navigation/navbar'
 import BridgeActivity from '../components/BridgeActivity'
+import { CrossChainSwapForm } from '../components/CrossChainSwapForm'
 
 export function Hero() {
   return (
@@ -116,6 +117,22 @@ export function Hero() {
               </button>
             </div>
             <p className="text-center text-gray-400 text-sm mt-4">Connect your wallet to buy PSI tokens</p>
+          </motion.div>
+
+          {/* Cross-Chain Bridge & Swap Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="w-full max-w-2xl mx-auto mb-20"
+          >
+            <h3 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-yellow-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              Cross-Chain Bridge & Swap
+            </h3>
+            <div className="bg-gradient-to-br from-purple-900/30 to-black/50 backdrop-blur-sm border border-purple-700/50 rounded-2xl p-8">
+              <CrossChainSwapForm />
+            </div>
+            <p className="text-center text-gray-400 text-sm mt-4">Bridge PSI between Sepolia and Cardona testnets</p>
           </motion.div>
 
           {/* Stats */}

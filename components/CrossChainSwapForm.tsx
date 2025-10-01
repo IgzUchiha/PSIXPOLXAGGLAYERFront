@@ -411,12 +411,12 @@ export function CrossChainSwapForm() {
       {/* Form */}
       <form onSubmit={handleCrossSwap}>
         {/* Token selection */}
-        <div className="token-section-label">
-          Select Token Pair
+        <div className="mb-2">
+          <label className="block text-sm font-medium text-gray-300 mb-2">Select Token Pair</label>
         </div>
-        <div className="token-section mb-4">
+        <div className="mb-4">
           <select 
-            className="w-full bg-transparent text-white border-none outline-none p-2 text-lg"
+            className="w-full px-6 py-4 bg-purple-900/50 backdrop-blur-sm border-2 border-purple-600 rounded-lg text-white text-lg focus:outline-none focus:border-yellow-500 transition-all"
             value={selectedOption}
             onChange={(e) => setSelectedOption(e.target.value as TokenSelection)}
             disabled={loading || txState !== "idle" || loadingOptions}
@@ -448,13 +448,13 @@ export function CrossChainSwapForm() {
         </div>
         
         {/* Amount input */}
-        <div className="token-section-label">
-          Amount to bridge and swap
+        <div className="mb-2">
+          <label className="block text-sm font-medium text-gray-300 mb-2">Amount to Bridge & Swap</label>
         </div>
-        <div className="token-section">
+        <div className="mb-4">
           <input 
-            className="token-amount-input"
-            placeholder="0.0" 
+            className="w-full px-6 py-4 bg-purple-900/50 backdrop-blur-sm border-2 border-purple-600 rounded-lg text-white text-lg placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-all"
+            placeholder="Enter amount (e.g. 0.5)" 
             type="number"
             min="0.000001"
             step="0.000001"
@@ -462,13 +462,13 @@ export function CrossChainSwapForm() {
             onChange={(e) => setAmountIn(e.target.value)} 
             disabled={loading || txState !== "idle"}
           />
-          <p className="mt-2 text-xs text-gray-400">Cross-chain transactions may take 20-25 minutes to complete</p>
+          <p className="mt-2 text-xs text-gray-400">⏱️ Cross-chain transactions may take 20-25 minutes to complete</p>
         </div>
         
         {/* Submit button */}
         <button 
           type="submit" 
-          className="action-button"
+          className="w-full px-12 py-4 bg-gradient-to-r from-yellow-500 to-purple-600 rounded-lg text-white text-xl font-bold hover:shadow-2xl hover:shadow-yellow-500/50 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           disabled={loading || txState !== "idle" || !selectedOption || !amountIn || amountIn === "0" || loadingOptions}
         >
           {loading ? (
@@ -484,7 +484,7 @@ export function CrossChainSwapForm() {
           ) : txState !== "idle" ? (
             "Transaction in Progress..."
           ) : (
-            "Bridge + Swap"
+            "🌉 Bridge + Swap Tokens"
           )}
         </button>
         
