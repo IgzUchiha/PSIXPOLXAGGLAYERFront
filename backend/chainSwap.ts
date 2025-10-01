@@ -8,12 +8,12 @@ import { getLxLyClient, from, to, configuration, tokens, SCALING_FACTOR } from '
 const TOKENS = {
   // Sepolia (Network 0)
   0: {
-    TOKEN_A: "0x794203e2982EDA39b4cfC3e1F802D6ab635FcDcB",
+    TOKEN_A: "0x4a3Ee55dC65331A614185f74e79bd2Bf97d3754A", // SEPOLIA_PSI
     TOKEN_B: "0x5eE2DeAd28817153F6317a3A21F1e8609da0c498"
   },
   // Cardona (Network 1)
   1: {
-    TOKEN_A: "0x19956fa010ECAeA67bd8eAa91b18A0026F1c31D7",
+    TOKEN_A: "0x930EFf6A4464C4fA0Bef28dA541343d5E6069767", // CARDONA_PSI
     TOKEN_B: "0xD6395Ee1b7DFDB64ba691fdB5B71b3624F168C4C"
   }
 };
