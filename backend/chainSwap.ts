@@ -33,8 +33,8 @@ const NETWORK_CONFIG = {
   }
 };
 
-const TOKEN_A_NAME = "Token A";
-const TOKEN_B_NAME = "Token B";
+const TOKEN_A_NAME = "PSI On Ethereum";
+const TOKEN_B_NAME = "PSI On Polygon";
 
 // Token selection options
 enum TokenSelection {

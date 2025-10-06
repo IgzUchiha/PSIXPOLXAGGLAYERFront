@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Navbar } from '../components/navigation/navbar'
 import BridgeActivity from '../components/BridgeActivity'
 import { CrossChainSwapForm } from '../components/CrossChainSwapForm'
+import Buy from '../components/Buy'
 
 export function Hero() {
   return (
@@ -101,22 +102,9 @@ export function Hero() {
             className="w-full max-w-4xl mx-auto mb-20"
           >
             <h3 className="text-2xl font-bold text-center mb-6 bg-gradient-to-r from-yellow-400 to-purple-400 bg-clip-text text-transparent">
-              Buy PSI Tokens
+              Buy PSI Tokens on Cardona
             </h3>
-            {/* Placeholder - will be connected with wallet provider */}
-            <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
-              <input
-                type="number"
-                placeholder="Enter amount"
-                className="flex-1 px-6 py-4 bg-purple-900/50 backdrop-blur-sm border-2 border-purple-600 rounded-lg text-white text-lg placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-all"
-              />
-              <button
-                className="px-12 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg text-white text-xl font-bold hover:shadow-2xl hover:shadow-yellow-500/50 transition-all duration-300 hover:scale-105"
-              >
-                Buy Tokens
-              </button>
-            </div>
-            <p className="text-center text-gray-400 text-sm mt-4">Connect your wallet to buy PSI tokens</p>
+            <Buy />
           </motion.div>
 
           {/* Cross-Chain Bridge & Swap Section */}
